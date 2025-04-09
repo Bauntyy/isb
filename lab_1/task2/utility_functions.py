@@ -45,6 +45,14 @@ def read_json(filename: str) -> dict:
         return {}
 
 
+def sort_dict(unsorted_dict):
+    sorted_dict = {}
+    for key in sorted(unsorted_dict, key=unsorted_dict.get, reverse=True):
+        sorted_dict[key] = unsorted_dict[key]
+    print(sorted_dict)
+    return sorted_dict
+
+
 def calculate_frequency(text):
     """
     Calculates character frequencies in a given text.

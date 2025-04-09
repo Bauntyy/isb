@@ -7,7 +7,9 @@ def read_file(filename):
 
     Returns:
     str: The contents of the file.
-    """
+    """gsggafafawfdaw
+
+    
     with open(filename, 'r', encoding='utf-8') as file:
         return file.read()
 

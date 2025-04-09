@@ -1,5 +1,5 @@
 from constants import *
-from utility_functions import calculate_frequency, read_json, read_file, write_to_file
+from utility_functions import calculate_frequency, read_json, read_file, sort_dict, write_to_file
 
 
 def main():
@@ -19,17 +19,15 @@ def main():
         print(text)
 
         # Вычисление индекса частот символов
-        percent_dict = calculate_frequency(text)
+        frequency_dict = calculate_frequency(text)
         print("\n", "*" * 40, "Индекс частот", "*" * 40, "\n")
-        sorted_dict = {}
-        for key in sorted(percent_dict, key=percent_dict.get, reverse=True):
-            sorted_dict[key] = percent_dict[key]
-        print(sorted_dict)
+        sort_dict(frequency_dict)
 
         # Дешифровка текста
+        decrypt_key = read_json(PATH_KEY)
         print("\n", "*" * 40, "Дешифрованный текст", "*" * 40, "\n")
         new_text = text
-        for original_char, replacement_char in DECRYPT_KEY.items():
+        for original_char, replacement_char in decrypt_key.items():
             new_text = new_text.replace(original_char, replacement_char)
         print(new_text)
 

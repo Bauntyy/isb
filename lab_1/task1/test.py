@@ -1,7 +1,9 @@
 from utility_functions import polybius_encode, read_file, write_file
+from constants import *
 
 
 def main():
+
     """
     Main function of the program. It reads an input text and a key, encrypts the text using the Polybius Square method,
     and writes the result to an output file.
@@ -18,19 +20,15 @@ def main():
     """
     try:
         # Reading the input text and key
-        input_filename = 'input.txt'
-        key_filename = 'key.txt'
-        output_filename = 'encrypted.txt'
-
-        text = read_file(input_filename)
-        key = read_file(key_filename).strip()
+        text = read_file(INPUT_FILENAME)
+        key = read_file(KEY_FILENAME).strip()
 
         # Encrypting the text
         encrypted_text = polybius_encode(text, key)
 
         # Writing the result to the output file
-        write_file(output_filename, encrypted_text)
-        print(f"The text has been successfully encrypted and saved to {output_filename}")
+        write_file(OUTPUT_FILENAME, encrypted_text)
+        print(f"The text has been successfully encrypted and saved to {OUTPUT_FILENAME}")
 
     except FileNotFoundError as e:
         print(f"Error: File not found - {e.filename}")
