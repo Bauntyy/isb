@@ -12,7 +12,7 @@ def read_json(path):
             return {}, []
 
 
-def read_sequence(path: str) -> list:
+def read_sequence(path: str):
     try:
         with open(path, "r") as file:
             return [line.strip() for line in file.readlines()]
