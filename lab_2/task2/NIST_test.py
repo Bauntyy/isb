@@ -13,8 +13,8 @@ def frequency_test(binary_sequence):
         else:
             result -= 1
 
-    S = result/m.sqrt(len(binary_sequence))
-    p_value = m.erfc(S/m.sqrt(2))
+    S_m = result/m.sqrt(len(binary_sequence))
+    p_value = m.erfc(S_m/m.sqrt(2))
     return p_value
 
 
@@ -43,7 +43,7 @@ def same_bits_test(binary_sequence):
     return p_value
 
 
-def longest_sequence_test(binary_sequence, sequence_size = 8):
+def longest_sequence_test(binary_sequence, PI_i,  sequence_size = 8):
     if len(binary_sequence) == 0:
         raise ValueError("Последовательность не может быть пустой")
 
