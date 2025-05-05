@@ -1,7 +1,7 @@
 C++ results:
-Result of frequency bit test: 0.4795001221869535
-Result of run same bit test: 0.29745653826544605
-Result of longest ones sequence test: 0.978131762349265
+Result of frequency bit test: 0.37675911781158217
+Result of run same bit test: 0.28896915110415344
+Result of longest ones sequence test: 0.9073623541531153
 JAVA results:
 Result of frequency bit test: 0.11161176829829222
 Result of run same bit test: 0.4882502130546849
