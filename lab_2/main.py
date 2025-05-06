@@ -31,6 +31,9 @@ def main() -> None:
     result_path = constants.get("result_path")
     print(java_sequence_path, cpp_sequence_path)
 
+    # import os
+    # print("Текущая рабочая директория:", os.getcwd())
+
     # Чтение бинарных последовательностей
     cpp_sequence = read_sequence(cpp_sequence_path)
     java_sequence = read_sequence(java_sequence_path)

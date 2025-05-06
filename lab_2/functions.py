@@ -44,10 +44,10 @@ def read_sequence(file_path: str) -> str:
         Exception: Если файл не найден.
     """
     try:
-        with open(file_path, "r") as file:
-            return file.read().replace(" ", "")
+        with open(file_path, "r", encoding="utf-8") as file:
+            return file.read().replace(" ", "").replace("\n", "")
     except FileNotFoundError:
-        raise Exception(f"Файл {file_path} не найден")
+        raise FileNotFoundError(f"Файл {file_path} не найден")
 
 
 def run_tests(sequence: str, PI_i: list) -> list[str]:

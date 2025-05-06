@@ -50,23 +50,21 @@ def same_bits_test(binary_sequence):
     if len(binary_sequence) == 0:
         raise ValueError("Последовательность не может быть пустой")
 
-    ones_count = 0
-    for bit in binary_sequence:
-        if bit == "1":
-            ones_count += 1
-    unit_of_ones = ones_count/len(binary_sequence)
+    n = len(binary_sequence)
+    unit_of_ones = binary_sequence.count('1') / n
 
-    if abs(unit_of_ones - 0.5) >= 2/m.sqrt(len(binary_sequence)):
+    if abs(unit_of_ones - 0.5) >= 2/m.sqrt(n):
         p_value = 0
         return p_value
 
-    number_of_sign_alternations = 0
-    for i in range(len(binary_sequence) - 1):
-        if binary_sequence[i] != binary_sequence[i + 1]:
-            number_of_sign_alternations += 1
+    sign_alternations = 0
+    for i in range(1, n):
+        if binary_sequence[i] != binary_sequence[i-1]:
+            sign_alternations += 1
 
-    p_value = (abs(number_of_sign_alternations - 2 * len(binary_sequence) * unit_of_ones * (1 - unit_of_ones))) / (2 * m.sqrt(2*len(binary_sequence) * unit_of_ones * (1 - unit_of_ones)))
-
+    numerator = abs(sign_alternations - 2 * n * unit_of_ones * (1 - unit_of_ones))
+    denominator = 2 * m.sqrt(2 * n) * unit_of_ones * (1 - unit_of_ones)
+    p_value = m.erfc(numerator / denominator)
     return p_value
 
 
