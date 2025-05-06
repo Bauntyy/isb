@@ -96,6 +96,10 @@ def longest_sequence_test(binary_sequence, PI_i,  block_size = 8):
     if len(binary_sequence) % block_size != 0:
         raise ValueError("Длина блока должна быть кратна длине последовательности")
 
+    # Предварительные проверки на неслучайность
+    ones_count = binary_sequence.count('1')
+    if ones_count <= 1:  # Менее 2 единиц → явно неслучайно
+        return 0
 
     V_i = [0] * 4
     for i in range(0, len(binary_sequence), block_size):
@@ -126,7 +130,7 @@ def longest_sequence_test(binary_sequence, PI_i,  block_size = 8):
 
     hi_square = 0.0
     for i in range(len(V_i)):
-        hi_square += ((V_i[i] - 16 * PI_i[i]) ** 2) / (16 * PI_i[i])
+        hi_square = sum(((V_i[i] - 16 * PI_i[i]) ** 2) / (16 * PI_i[i]) for i in range(len(V_i)))
 
     p_value = gammainc(3/2, hi_square/2)
     return p_value
