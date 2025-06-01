@@ -245,3 +245,27 @@ class FileOperations:
         except Exception as e:
             print(f"[ERROR] Unexpected error saving private key: {str(e)}")
             raise
+
+    @staticmethod
+    def save_encrypted_sym_key(encrypted_key: bytes, output_path: str) -> None:
+        """
+        Saves the encrypted symmetric key to a file specified in the configuration.
+        Args:
+            encrypted_key: The encrypted symmetric key to be saved (bytes)
+            output_path: Destination file path.
+        Raises:
+            SystemExit: If no valid save path is provided in the configuration
+        """
+        # Determine output file path
+
+        if not output_path:
+            print("[ERROR] No valid path specified for encrypted symmetric key in configuration")
+            exit(1)
+
+        print(f"[INFO] Saving encrypted symmetric key to: {output_path}")
+        try:
+            FileOperations.write_binary_file(output_path, encrypted_key)
+            print(f"[SUCCESS] Encrypted symmetric key successfully saved to: {output_path}")
+        except Exception as e:
+            print(f"[ERROR] Failed to save encrypted key: {str(e)}")
+            raise
