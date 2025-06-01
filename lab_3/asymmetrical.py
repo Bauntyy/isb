@@ -42,14 +42,11 @@ class AsymmetricCrypto:
     def decrypt_with_private_key(private_key: Any, encrypted_data: bytes) -> bytes:
         """
         Decrypts data using RSA private key with OAEP padding.
-
         Args:
             private_key: RSA private key for decryption
             encrypted_data: Encrypted data to decrypt
-
         Returns:
             Decrypted data as bytes
-
         Raises:
             ValueError: If decryption fails due to invalid input
             RuntimeError: If decryption fails for other reasons

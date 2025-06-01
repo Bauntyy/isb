@@ -46,44 +46,6 @@ class FileOperations:
             return False
 
     @staticmethod
-    def read_text_file(file_path: str) -> Union[str, None]:
-        """
-        Read and return the contents of a text file.
-        Args:
-            file_path: Path to the file to be read.
-        Returns:
-            The file contents as string if successful, None otherwise.
-        """
-        try:
-            with open(file_path, 'r', encoding='utf-8') as file:
-                return file.read()
-        except FileNotFoundError:
-            print(f"Error: File not found at path '{file_path}'")
-        except UnicodeDecodeError:
-            print(f"Error: Failed to decode text file '{file_path}' (invalid encoding)")
-        except IOError as e:
-            print(f"Error reading text file '{file_path}': {str(e)}")
-        return None
-
-    @staticmethod
-    def write_text_file(file_path: str, content: str) -> bool:
-        """
-        Write text content to a file.
-        Args:
-            file_path: Path where the file will be saved.
-            content: Text content to write.
-        Returns:
-            True if operation succeeded, False otherwise.
-        """
-        try:
-            with open(file_path, 'w', encoding='utf-8') as file:
-                file.write(content)
-            return True
-        except IOError as e:
-            print(f"Error writing text file '{file_path}': {str(e)}")
-            return False
-
-    @staticmethod
     def read_json_file(file_path: str) -> Union[Dict[str, Any], None]:
         """
         Read and parse a JSON file.
@@ -125,16 +87,12 @@ class FileOperations:
 
     @staticmethod
     def load_config(path: str) -> dict:
-        """
-        Загрузка json
-        :param path: путь к json
-        :return: загрузка
-        """
         try:
-            with open(path, 'r') as f:
+            with open(path, 'r', encoding='utf-8') as f:
                 return json.load(f)
-        except Exception as e:
-            print("Error..", str(e))
+
+        except FileNotFoundError as e:
+            raise FileNotFoundError(f"Config file not found: {path}") from e
 
     @staticmethod
     def read_public_key(key_path: str):
