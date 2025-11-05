@@ -1,0 +1,9 @@
+{
+    "input_file_path": "input.txt",
+    "encrypted_file_path": "encrypted.bin",
+    "decrypted_file_path": "decrypted.txt",
+    "symmetric_key_path": "symmetric.bin",
+    "public_key_path": "public.pem",
+    "private_key_path": "private.pem",
+    "nonce": "nonce.bin"
+}
